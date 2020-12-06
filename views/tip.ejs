@@ -33,11 +33,11 @@
                   </div>
                 <% } else if (tip.type === 'markdown') { %>
                   <div class="code-block">
-                    <code class="markdown"><%= tip.data %></code>
+                    <pre class="markdown"><%= tip.data %></pre>
                     <p><%= tip.description %></p>
                   </div>
                 <% } else if (tip.type === 'code') { %>
-                    <div class="code-block"><code class="javascript"><%= tip.data %></code></div><p><%= tip.description %></p>
+                    <div class="code-block"><pre class="code javascript"><%= tip.data %></pre></div><p><%= tip.description %></p>
                 <% } %>
               </div>
             </div>
