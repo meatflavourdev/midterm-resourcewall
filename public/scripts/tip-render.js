@@ -98,10 +98,10 @@ const createTipElement = function(tip) {
     content += `<div class="video"><youtube-video controls src="${data}"></youtube-video></div>`;
     break;
   case 'markdown':
-    content += `<div class="markdown"><pre>${data}</pre><p>${description}</p></div>`;
+    content += `<div class="code-block markdown"><pre class="markdown">${data}</pre><p>${description}</p></div>`;
     break;
   case 'code':
-    content += `<div class="code-block"><pre class="code">${data}</pre><p>${description}</p></div>`;
+    content += `<div class="code-block"><pre class="code javascript">${data}</pre><p>${description}</p></div>`;
     break;
   case 'link':
     content += `<div class="link"><span>Link: </span><a href="${data}">${data}</a><p>${description}</p></div>`;
@@ -151,10 +151,15 @@ const renderTips = function(tips) {
   for (const tip of tips) {
     $('#list-tips').append(createTipElement(tip));
   }
-  EnlighterJS.init('pre.code', 'code', {
-    language : 'json',
+  EnlighterJS.init('pre.code', 'pre.javascript', {
+    language : 'javascript',
     theme: 'dracula',
     indent : 2
+  });
+  EnlighterJS.init('pre.markdown', {
+      language : 'markdown',
+      theme: 'dracula',
+      indent : 2
   });
   $('#paginator').show();
   likeAndBookmarkListeners();

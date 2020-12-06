@@ -32,12 +32,12 @@
                     <youtube-video controls src="<%= tip.data %>"></youtube-video>
                   </div>
                 <% } else if (tip.type === 'markdown') { %>
-                  <div class="markdown">
-                    <pre><%= tip.data %></pre>
+                  <div class="code-block">
+                    <code class="markdown"><%= tip.data %></code>
                     <p><%= tip.description %></p>
                   </div>
                 <% } else if (tip.type === 'code') { %>
-                    <div class="code-block"><pre class="code"><%= tip.data %></pre></div><p><%= tip.description %></p>
+                    <div class="code-block"><code class="javascript"><%= tip.data %></code></div><p><%= tip.description %></p>
                 <% } %>
               </div>
             </div>
