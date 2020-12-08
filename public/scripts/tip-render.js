@@ -45,8 +45,13 @@ const paginator = function(arr, offset = 10) {
   }
 
   $('#paginator').empty().hide();
-  if (pages['2']) drawPaginator(pages);
   loadTips(pages[1]);
+  if (pages['2']) {
+    delete pages[1];
+    drawPaginator(pages);
+    console.log(pages);
+  };
+
   //return pages;
 };
 
@@ -74,13 +79,16 @@ const loadTips = function(tipsID) {
  * @param {*} tipsPaged
  */
 const drawPaginator = function(tipsPaged) {
-
   for (const page in tipsPaged) {
-    $('#paginator').append(`<button class=" btn btn-primary m-1.5 btn-sm rounded text-center">${page}</button>`);
-    $('#paginator button:last-child').click(() => {
+    $('#paginator').append(`<button class=" btn btn-primary m-1.5 btn-sm rounded text-center" style="display:none;">Load More</button>`);
+    $('#paginator button:last-child').click((e) => {
       loadTips(tipsPaged[page]);
+      // Hide this element, show the next
+      $(e.currentTarget).hide().next().show();
     });
   }
+  // Show the first one
+  $('#paginator button:first-child').show();
 };
 
 
