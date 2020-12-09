@@ -73,7 +73,7 @@ module.exports = (db) => {
   router.get('/:id', (req, res) => {
     // Only authenticated user can view profiles
     if(!res.locals.user.id){
-      throw new Error('not authorized');
+      res.redirect('/user/login');
     }
     const user_id = res.locals.user.id;
     const profile_id = req.params.id; //Get the page user id
